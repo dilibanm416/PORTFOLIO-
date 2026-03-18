@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DILIBAN M — Filmmaker & Storyteller</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&family=Noto+Serif+Tamil:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:#080608;color:#f5ead8;font-family:'Space Mono',monospace;overflow-x:hidden;}
+
+/* HERO */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:40px 24px;
+  position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 80% 60% at 50% 110%,#3d1f00 0%,transparent 65%),
+             radial-gradient(ellipse 50% 50% at 20% 50%,#1a0a2e 0%,transparent 60%),
+             linear-gradient(180deg,#020108 0%,#0a0415 50%,#040202 100%);
+}
+.hero-lines{
+  position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg,transparent 0px,transparent 59px,rgba(240,165,0,0.03) 59px,rgba(240,165,0,0.03) 60px);
+}
+.hero-label{font-size:0.6rem;letter-spacing:0.45em;color:#f0a500;text-transform:uppercase;margin-bottom:28px;opacity:0;animation:fadeUp 1s ease 0.4s forwards;}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,20vw,14rem);line-height:0.85;letter-spacing:0.02em;background:linear-gradient(180deg,#fff8ee 0%,#f0a500 50%,#c07800 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;animation:fadeUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;}
+.hero-name span{display:block;background:linear-gradient(180deg,#f0a500 0%,#c0392b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.4rem);color:#c8b8a8;margin-top:20px;opacity:0;animation:fadeUp 1s ease 0.8s forwards;}
+.hero-tamil{font-family:'Noto Serif Tamil',serif;font-size:1rem;color:#f0a500;margin-top:10px;opacity:0;animation:fadeUp 1s ease 1.1s forwards;}
+.scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 1s ease 1.6s forwards;}
+.scroll-line{width:1px;height:50px;background:linear-gradient(180deg,#f0a500,transparent);animation:pulse 2s ease-in-out infinite;}
+.scroll-txt{font-size:0.5rem;letter-spacing:0.35em;color:#f0a500;text-transform:uppercase;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+
+/* TICKER */
+.ticker{width:100%;background:#0e0c10;border-top:1px solid #1e1628;border-bottom:1px solid #1e1628;padding:12px 0;overflow:hidden;white-space:nowrap;}
+.ticker-inner{display:inline-block;animation:tick 22s linear infinite;font-size:0.6rem;letter-spacing:0.3em;color:#f0a500;opacity:0.6;}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* LAYOUT */
+.wrap{max-width:1100px;margin:0 auto;padding:100px 40px;}
+.tag{font-size:0.58rem;letter-spacing:0.45em;color:#f0a500;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.tag::before{content:'';width:36px;height:1px;background:#f0a500;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);line-height:0.9;margin-bottom:60px;color:#f5ead8;}
+.gold{color:#f0a500;}
+
+/* ABOUT */
+#about{background:#0d0a14;}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.about-card{padding:36px;border:1px solid #2a1f3a;background:rgba(255,255,255,0.015);position:relative;}
+.about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f0a500,#c0392b,transparent);}
+.about-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.08em;color:#f0a500;margin-bottom:14px;}
+.about-card p{font-family:'Playfair Display',serif;font-size:1rem;line-height:1.85;color:#a89888;}
+.quote-box{margin-top:40px;padding:50px 40px;text-align:center;position:relative;}
+.quote-box::before{content:'"';font-family:'Playfair Display',serif;font-size:7rem;color:#f0a500;opacity:0.12;position:absolute;top:-10px;left:30px;line-height:1;}
+.quote-box p{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.1rem,2.5vw,1.6rem);line-height:1.7;color:#f5ead8;position:relative;z-index:1;}
+
+/* EXPERIENCE */
+#experience{background:#080610;}
+.exp-item{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:44px 0;border-bottom:1px solid #1a1428;position:relative;transition:background 0.3s;}
+.exp-item:hover{background:rgba(240,165,0,0.025);}
+.exp-item::before{content:'';position:absolute;left:-40px;top:0;bottom:0;width:3px;background:transparent;transition:background 0.3s;}
+.exp-item:hover::before{background:linear-gradient(180deg,#f0a500,#c0392b);}
+.exp-date{font-size:0.6rem;letter-spacing:0.15em;color:#5a4a7a;line-height:1.9;padding-top:4px;}
+.exp-role{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.06em;color:#f5ead8;margin-bottom:4px;}
+.exp-org{font-size:0.62rem;letter-spacing:0.22em;color:#f0a500;text-transform:uppercase;margin-bottom:14px;}
+.exp-list{list-style:none;}
+.exp-list li{font-family:'Playfair Display',serif;font-size:0.92rem;line-height:1.8;color:#8a7a9a;padding-left:18px;position:relative;margin-bottom:4px;}
+.exp-list li::before{content:'—';position:absolute;left:0;color:#f0a500;opacity:0.5;}
+
+/* PAAL BANNER */
+.paal-banner{background:radial-gradient(ellipse 60% 100% at 50% 100%,rgba(255,249,240,0.04) 0%,transparent 70%),#06040a;border-top:1px solid #1e1628;border-bottom:1px solid #1e1628;padding:80px 40px;text-align:center;}
+.paal-main{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,6rem);letter-spacing:0.15em;background:linear-gradient(180deg,#fff9f0,#c07800);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.paal-sub{font-size:0.6rem;letter-spacing:0.42em;color:#5a4a3a;text-transform:uppercase;margin-top:12px;}
+
+/* WORKS */
+#works{background:#07050c;}
+.works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.work-card{display:block;text-decoration:none;position:relative;aspect-ratio:3/4;overflow:hidden;background:#0f0c18;}
+.wc-bg{position:absolute;inset:0;transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);}
+.work-card:hover .wc-bg{transform:scale(1.07);}
+.wc1{background:linear-gradient(135deg,#1a0820,#3d0a2e);}
+.wc2{background:linear-gradient(135deg,#0a1a2e,#0d3a5a);}
+.wc3{background:linear-gradient(135deg,#1a1000,#3a2800);}
+.wc4{background:linear-gradient(135deg,#0a1a0a,#0d3a1a);}
+.wc5{background:linear-gradient(135deg,#1a0a00,#3a1800);}
+.wc6{background:linear-gradient(135deg,#0a0a1a,#1a0a3a);}
+.wc-lines{position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0px,transparent 24px,rgba(255,255,255,0.012) 24px,rgba(255,255,255,0.012) 25px);}
+.wc-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,0.94) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;}
+.wc-num{position:absolute;top:14px;right:18px;font-family:'Bebas Neue',sans-serif;font-size:4.5rem;line-height:1;color:rgba(255,255,255,0.04);}
+.wc-type{font-size:0.52rem;letter-spacing:0.4em;color:#f0a500;text-transform:uppercase;margin-bottom:6px;}
+.wc-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.04em;color:#f5ead8;line-height:1.1;margin-bottom:10px;}
+.wc-arrow{width:30px;height:30px;border:1px solid #f0a500;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#f0a500;font-size:0.75rem;opacity:0;transform:translateX(-8px);transition:all 0.3s ease;}
+.work-card:hover .wc-arrow{opacity:1;transform:translateX(0);}
+
+/* EDUCATION */
+#education{background:#0a0812;}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.edu-card{padding:36px;border:1px solid #1e1628;position:relative;overflow:hidden;transition:border-color 0.3s;}
+.edu-card:hover{border-color:#4a3060;}
+.edu-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f0a500,#c0392b);transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease;}
+.edu-card:hover::after{transform:scaleX(1);}
+.edu-deg{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;color:#f5ead8;margin-bottom:6px;}
+.edu-field{font-family:'Playfair Display',serif;font-style:italic;font-size:0.85rem;color:#8a7a7a;margin-bottom:12px;}
+.edu-school{font-size:0.62rem;letter-spacing:0.2em;color:#f0a500;margin-bottom:6px;text-transform:uppercase;}
+.edu-year{font-size:0.58rem;color:#4a3a5a;letter-spacing:0.15em;}
+
+/* SKILLS */
+#skills{background:#06040a;padding:70px 40px;}
+.skills-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px;margin-top:40px;}
+.pill{padding:9px 20px;border:1px solid #241c34;font-size:0.6rem;letter-spacing:0.22em;color:#7a6a8a;text-transform:uppercase;position:relative;overflow:hidden;cursor:default;transition:color 0.3s,border-color 0.3s;}
+.pill::before{content:'';position:absolute;inset:0;background:#f0a500;transform:translateX(-101%);transition:transform 0.3s ease;z-index:-1;}
+.pill:hover{color:#080608;border-color:#f0a500;}
+.pill:hover::before{transform:translateX(0);}
+
+/* LANGUAGES */
+#languages{background:#0c0a14;padding:80px 40px;border-top:1px solid #1a1428;}
+.lang-wrap{max-width:1100px;margin:0 auto;}
+.lang-grid{display:flex;gap:24px;margin-top:40px;}
+.lang-item{flex:1;padding:28px;border:1px solid #1e1830;text-align:center;}
+.lang-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#f5ead8;margin-bottom:8px;}
+.lang-level{font-size:0.55rem;letter-spacing:0.32em;color:#f0a500;text-transform:uppercase;}
+
+/* INFLUENCE */
+#influence{background:#060408;padding:100px 40px;border-top:1px solid #1a1428;}
+.inf-wrap{max-width:1100px;margin:0 auto;}
+.inf-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+.inf-label{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.22em;color:#f0a500;margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+.inf-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,#3a2a4a,transparent);}
+.inf-item{font-family:'Playfair Display',serif;font-size:1rem;color:#7a6a8a;padding:12px 0;border-bottom:1px solid #16121e;display:flex;align-items:center;gap:10px;transition:color 0.2s;}
+.inf-item::before{content:'·';color:#f0a500;font-size:1.4rem;}
+.inf-item:hover{color:#f5ead8;}
+.inf-item.tml{font-family:'Noto Serif Tamil',serif;font-size:0.9rem;}
+
+/* CONTACT */
+#contact{background:radial-gradient(ellipse 100% 70% at 50% 100%,#1a0800 0%,transparent 60%),#06040a;padding:140px 40px 80px;text-align:center;border-top:1px solid #1a1428;}
+.contact-wrap{max-width:900px;margin:0 auto;}
+.fadeout-tag{font-size:0.58rem;letter-spacing:0.5em;color:#3a2a4a;text-transform:uppercase;margin-bottom:40px;}
+.contact-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,14vw,10rem);line-height:0.85;background:linear-gradient(180deg,#f5ead8 0%,#f0a500 55%,#c0392b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;}
+.contact-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:#5a4a6a;margin-bottom:56px;}
+.contact-links{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:80px;}
+.clink{display:flex;align-items:center;justify-content:center;gap:16px;text-decoration:none;color:#f5ead8;font-size:0.75rem;letter-spacing:0.2em;padding:15px 40px;border:1px solid #2a2035;min-width:320px;position:relative;overflow:hidden;transition:color 0.3s,border-color 0.3s;}
+.clink::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#f0a500,#c0392b);opacity:0;transition:opacity 0.3s;z-index:-1;}
+.clink:hover{color:#080608;border-color:#f0a500;}
+.clink:hover::before{opacity:1;}
+.footer-bar{padding-top:48px;border-top:1px solid #1e1828;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#f0a500;letter-spacing:0.1em;}
+.footer-tamil{font-family:'Noto Serif Tamil',serif;font-size:1.2rem;color:#2e2240;}
+.footer-copy{font-size:0.5rem;letter-spacing:0.2em;color:#2e2240;text-transform:uppercase;}
+
+/* REVEAL */
+.r{opacity:0;transform:translateY(36px);transition:opacity 0.75s ease,transform 0.75s cubic-bezier(0.16,1,0.3,1);}
+.r.on{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  .about-cards,.edu-grid,.inf-grid,.exp-item{grid-template-columns:1fr;}
+  .works-grid{grid-template-columns:1fr 1fr;}
+  .lang-grid{flex-direction:column;}
+  .clink{min-width:unset;width:100%;}
+  .footer-bar{flex-direction:column;text-align:center;}
+  .exp-item::before{display:none;}
+}
+@media(max-width:500px){.works-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-lines"></div>
+  <p class="hero-label">ROLL: 001 &middot; SCENE: OPENING &middot; TAKE: 1</p>
+  <h1 class="hero-name">DILIBAN<span>M.</span></h1>
+  <p class="hero-sub">Aspiring Filmmaker &amp; Visual Storyteller</p>
+  <p class="hero-tamil">சென்னை &middot; கதை சொல்பவன்</p>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span class="scroll-txt">Scroll</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-inner">
+    &nbsp;&nbsp;DILIBAN M &middot; FILMMAKER &middot; STORYTELLER &middot; CHENNAI &middot; கதை சொல்பவன் &nbsp;&nbsp;&nbsp;&nbsp;
+    DILIBAN M &middot; FILMMAKER &middot; STORYTELLER &middot; CHENNAI &middot; கதை சொல்பவன் &nbsp;&nbsp;&nbsp;&nbsp;
+    DILIBAN M &middot; FILMMAKER &middot; STORYTELLER &middot; CHENNAI &middot; கதை சொல்பவன் &nbsp;&nbsp;&nbsp;&nbsp;
+    DILIBAN M &middot; FILMMAKER &middot; STORYTELLER &middot; CHENNAI &middot; கதை சொல்பவன்
+  </span>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <p class="tag r">Scene 01</p>
+    <h2 class="sec-title r">MY <span class="gold">STORY</span></h2>
+    <div class="quote-box r">
+      <p>Stories have the power to change how we see the world &mdash; and it is my responsibility to tell them with honesty, dignity, and love.</p>
+    </div>
+    <div class="about-cards" style="margin-top:40px;">
+      <div class="about-card r">
+        <h3>My Passion for Stories</h3>
+        <p>I'm Diliban from Chennai. For me, visual storytelling isn't just a job &mdash; it's a responsibility. I am deeply passionate about sharing tales that focus on representation, inclusivity, and the lives of people who are often overlooked.</p>
+      </div>
+      <div class="about-card r">
+        <h3>The Heart of Filmmaking</h3>
+        <p>I believe the true purpose of filmmaking is to capture honest stories about where we come from and the communities we belong to. My goal is to create films that inspire others and treat every person's story with the integrity and dignity it deserves.</p>
+      </div>
+      <div class="about-card r" style="grid-column:1/-1;">
+        <h3>My Vision</h3>
+        <p>I have many stories to tell, all with the same goal: to make sure everyone feels <em>seen</em> and <em>heard</em> through the power of film. From the streets of Chennai to the villages of Tamil Nadu &mdash; every life holds a universe worth capturing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <p class="tag r">Scene 02</p>
+    <h2 class="sec-title r">CREATIVE <span class="gold">EXPERIENCE</span></h2>
+
+    <div class="exp-item r">
+      <div class="exp-date">2021 &mdash; ONGOING</div>
+      <div>
+        <div class="exp-role">Independent Video Creator</div>
+        <div class="exp-org">Instagram &middot; @dil1ban</div>
+        <ul class="exp-list">
+          <li>Conceptualizes, directs, shoots, and edits short storytelling videos.</li>
+          <li>Documents social causes, community stories, and cultural events.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item r">
+      <div class="exp-date">Jan 2026 &ndash; Mar 2026</div>
+      <div>
+        <div class="exp-role">Photography &amp; Documentation Intern</div>
+        <div class="exp-org">PARI Network &middot; Chennai</div>
+        <ul class="exp-list">
+          <li>Coordinated photography exhibitions including <em>The Unseen Perspective</em>.</li>
+          <li>Captured cultural events and crowd dynamics at Chennai Sangamam.</li>
+          <li>Conducted field visits and developed structured story ideas for documentation projects.</li>
+          <li>Completed hands-on workshops in framing, lighting, and visual storytelling.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item r">
+      <div class="exp-date">Dec 2024 &ndash; Mar 2025</div>
+      <div>
+        <div class="exp-role">CSR Intern</div>
+        <div class="exp-org">Vikatan Group &middot; Chennai</div>
+        <ul class="exp-list">
+          <li>Executed drug awareness campaigns in semi-urban schools.</li>
+          <li>Drafted CSR project plans using Gantt charts and structured concept notes.</li>
+          <li>Documented awareness program at St. Thomas College and compiled the final report.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item r">
+      <div class="exp-date">Jul 2024 &ndash; Oct 2024</div>
+      <div>
+        <div class="exp-role">Program Facilitator Intern</div>
+        <div class="exp-org">Magic Bus India Foundation &middot; Chennai</div>
+        <ul class="exp-list">
+          <li>Delivered life skills and psychosocial support sessions to underprivileged children.</li>
+          <li>Collaborated with schools to identify high-need cases and track progress.</li>
+          <li>Documented community activities and prepared impact assessment reports.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item r">
+      <div class="exp-date">Jan 2024 &ndash; Mar 2024</div>
+      <div>
+        <div class="exp-role">Healthcare Social Work Intern</div>
+        <div class="exp-org">CURE International &middot; Egmore Children's Hospital</div>
+        <ul class="exp-list">
+          <li>Supported counseling for families of children with clubfoot.</li>
+          <li>Led "We Plant" initiative promoting nutrition and sustainability.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAAL BANNER -->
+<div class="paal-banner">
+  <p class="paal-main">THE STORIES THAT MATTER</p>
+  <p class="paal-sub">Every frame &middot; Every face &middot; Every truth</p>
+</div>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="wrap" style="padding-bottom:40px;">
+    <p class="tag r">Scene 03</p>
+    <h2 class="sec-title r">MONTAGE &mdash; <span class="gold">SAMPLE WORKS</span></h2>
+  </div>
+  <div style="padding:0 40px 100px;max-width:1100px;margin:0 auto;">
+    <div class="works-grid">
+      <a href="https://www.instagram.com/reel/DLVjZ0Nh1mn/" target="_blank" rel="noopener" class="work-card r">
+        <div class="wc-bg wc1"></div><div class="wc-lines"></div>
+        <div class="wc-overlay"><div class="wc-num">01</div><div class="wc-type">Short Film</div><div class="wc-title">Pride Month Short</div><div class="wc-arrow">&#8599;</div></div>
+      </a>
+      <a href="https://www.instagram.com/reel/DHiF10dyyw3/" target="_blank" rel="noopener" class="work-card r">
+        <div class="wc-bg wc2"></div><div class="wc-lines"></div>
+        <div class="wc-overlay"><div class="wc-num">02</div><div class="wc-type">Documentary</div><div class="wc-title">Study Tour Documentary</div><div class="wc-arrow">&#8599;</div></div>
+      </a>
+      <a href="https://www.instagram.com/reel/C7jFUChPuOH/" target="_blank" rel="noopener" class="work-card r">
+        <div class="wc-bg wc3"></div><div class="wc-lines"></div>
+        <div class="wc-overlay"><div class="wc-num">03</div><div class="wc-type">Short Film</div><div class="wc-title">Free Palestine Short</div><div class="wc-arrow">&#8599;</div></div>
+      </a>
+      <a href="https://www.instagram.com/reel/CzNx5-3LCnM/" target="_blank" rel="noopener" class="work-card r">
+        <div class="wc-bg wc4"></div><div class="wc-lines"></div>
+        <div class="wc-overlay"><div class="wc-num">04</div><div class="wc-type">Documentary</div><div class="wc-title">Rural Camp Documentary</div><div class="wc-arrow">&#8599;</div></div>
+      </a>
+      <a href="https://www.instagram.com/tv/CY1DobahVtc/" target="_blank" rel="noopener" class="work-card r">
+        <div class="wc-bg wc5"></div><div class="wc-lines"></div>
+        <div class="wc-overlay"><div class="wc-num">05</div><div class="wc-type">Documentary</div><div class="wc-title">Kariyaalur Documentary</div><div class="wc-arrow">&#8599;</div></div>
+      </a>
+      <a href="https://www.instagram.com/reel/DVQwRCrEtHG/" target="_blank" rel="noopener" class="work-card r">
+        <div class="wc-bg wc6"></div><div class="wc-lines"></div>
+        <div class="wc-overlay"><div class="wc-num">06</div><div class="wc-type">Short Film</div><div class="wc-title">Universe in Her Eyes</div><div class="wc-arrow">&#8599;</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <p class="tag r">Scene 04</p>
+    <h2 class="sec-title r">EDUCATION<span class="gold">.</span></h2>
+    <div class="edu-grid">
+      <div class="edu-card r">
+        <div class="edu-deg">Master of Social Work</div>
+        <div class="edu-field">Community Development</div>
+        <div class="edu-school">University of Madras</div>
+        <div class="edu-year">2023 &ndash; 2025</div>
+      </div>
+      <div class="edu-card r">
+        <div class="edu-deg">B.A. Sociology</div>
+        <div class="edu-field">Social Science</div>
+        <div class="edu-school">D.G. Vaishnav College, Chennai</div>
+        <div class="edu-year">2020 &ndash; 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-wrap">
+    <p class="tag r" style="width:100%;margin-bottom:0;">Skills &amp; Tools</p>
+    <div class="pill r">Storytelling</div>
+    <div class="pill r">Script Assistance</div>
+    <div class="pill r">Cinematography</div>
+    <div class="pill r">Mobile / DSLR</div>
+    <div class="pill r">Photography</div>
+    <div class="pill r">CapCut</div>
+    <div class="pill r">InShot</div>
+    <div class="pill r">Lightroom</div>
+    <div class="pill r">Documentation</div>
+    <div class="pill r">Team Coordination</div>
+    <div class="pill r">CSR Planning</div>
+    <div class="pill r">Community Development</div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section id="languages">
+  <div class="lang-wrap">
+    <p class="tag r">Dialogue Scene</p>
+    <h2 class="sec-title r" style="font-size:clamp(2.5rem,5vw,4rem);">LANGUAGES<span class="gold">.</span></h2>
+    <div class="lang-grid">
+      <div class="lang-item r"><div class="lang-name">Tamil</div><div class="lang-level">Native &middot; தாய்மொழி</div></div>
+      <div class="lang-item r"><div class="lang-name">English</div><div class="lang-level">Fluent</div></div>
+      <div class="lang-item r"><div class="lang-name">Hindi</div><div class="lang-level">Basic</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INFLUENCE -->
+<section id="influence">
+  <div class="inf-wrap">
+    <p class="tag r">Epilogue</p>
+    <h2 class="sec-title r">CINEMATIC <span class="gold">DNA</span></h2>
+    <div class="inf-grid">
+      <div>
+        <div class="inf-label r">Films That Shaped Me</div>
+        <div class="inf-item r">Madras</div>
+        <div class="inf-item r">Django Unchained</div>
+        <div class="inf-item r">The Secret Life of Walter Mitty</div>
+        <div class="inf-item r">Fight Club</div>
+        <div class="inf-item r">Gangs of Wasseypur</div>
+      </div>
+      <div>
+        <div class="inf-label r">Books That Moved Me</div>
+        <div class="inf-item tml r">மறக்கவே நினைக்கிறேன்</div>
+        <div class="inf-item tml r">பெண் எனும் பொருள்</div>
+        <div class="inf-item tml r">வட்டியும் முதலும்</div>
+        <div class="inf-item tml r">இந்தியாவில் சாதிகள்</div>
+        <div class="inf-item tml r">சாதியை அழித்தொழித்தல்</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <p class="fadeout-tag r">FADE OUT &middot; FIN &middot; முடிவு</p>
+    <h2 class="contact-name r">DILIBAN<br>M.</h2>
+    <p class="contact-tagline r">Aspiring Filmmaker &middot; Storyteller &middot; Chennai</p>
+    <div class="contact-links">
+      <a href="tel:+917397275141" class="clink r"><span>&#9743;</span> +91 73972 75141</a>
+      <a href="mailto:diliban.m416@gmail.com" class="clink r"><span>&#9993;</span> diliban.m416@gmail.com</a>
+      <a href="https://www.instagram.com/dil1ban" target="_blank" rel="noopener" class="clink r"><span>&#9672;</span> Instagram &middot; @dil1ban</a>
+    </div>
+    <div class="footer-bar r">
+      <div class="footer-logo">DILIBAN M.</div>
+      <div class="footer-tamil">கதை சொல்ல வந்தேன்</div>
+      <div class="footer-copy">&copy; 2025 &middot; Made in Chennai</div>
+    </div>
+  </div>
+</section>
+
+<script>
+var els = document.querySelectorAll('.r');
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}
+  });
+},{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
+els.forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>
